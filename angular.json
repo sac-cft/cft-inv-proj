@@ -3,5 +3,96 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "cft-inf-awd": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/cft-inf-awd",
+      "sourceRoot": "projects/cft-inf-awd/src",
+      "prefix": "cft-prj",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/cft-inf-awd",
+            "index": "projects/cft-inf-awd/src/index.html",
+            "main": "projects/cft-inf-awd/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/cft-inf-awd/tsconfig.app.json",
+            "assets": [
+              "projects/cft-inf-awd/src/favicon.ico",
+              "projects/cft-inf-awd/src/assets"
+            ],
+            "styles": [
+              "projects/cft-inf-awd/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "cft-inf-awd:build:production"
+            },
+            "development": {
+              "browserTarget": "cft-inf-awd:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "cft-inf-awd:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/cft-inf-awd/tsconfig.spec.json",
+            "assets": [
+              "projects/cft-inf-awd/src/favicon.ico",
+              "projects/cft-inf-awd/src/assets"
+            ],
+            "styles": [
+              "projects/cft-inf-awd/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
   }
 }
